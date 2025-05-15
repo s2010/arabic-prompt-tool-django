@@ -117,7 +117,4 @@ Deploy on:
 - AI-powered prompt ranking
 
 ---
-
-## 🧑‍💻 Built By
-
 Crafted for scale, designed for clarity.
