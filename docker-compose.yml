@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    # Set DJANGO_SETTINGS_MODULE environment variable before running uvicorn
+    command: bash -c "DJANGO_SETTINGS_MODULE=arabic_prompt_tool_django.settings uvicorn arabic_prompt_tool_django.asgi:application --host 0.0.0.0 --port 8000"
+
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://user:password@db:5432/mydatabase
+      - SECRET_KEY=change_this_in_production # IMPORTANT: Change this!
+      - DEBUG=True # Set to False in production
+
+  db:
+    image: postgres:14-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  postgres_data:

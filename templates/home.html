@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Arabic AI Prompts{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Arabic AI Prompts App!</h1>
+
+    {# Authentication status moved to base.html header #}
+
+    <h2>Approved Prompts</h2>
+
+    {# Add Search Input #}
+    <input
+        type="text"
+        name="q" {# Name the input 'q' for query #}
+        placeholder="Search prompts..."
+        hx-get="{% url 'search_prompts' %}" {# Send GET request to this URL #}
+        hx-trigger="keyup changed delay:300ms" {# Trigger on keyup, but wait 300ms after typing stops #}
+        hx-target="#prompt-list" {# Update the element with id="prompt-list" #}
+        hx-swap="innerHTML" {# Replace the inner HTML of the target element #}
+    >
+
+    {# Container for the prompt list - HTMX will update this #}
+    <div id="prompt-list">
+        {# Include the initial list of prompts here #}
+        {% include 'prompts/prompt_list.html' with prompts=prompts %}
+    </div>
+
+{% endblock %}

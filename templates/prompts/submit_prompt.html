@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit Prompt - Arabic AI Prompts{% endblock %}
+
+{% block content %}
+    <h2>Submit a New Prompt</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Prompt</button>
+    </form>
+
+    <p><a href="{% url 'home' %}">Cancel</a></p>
+{% endblock %}

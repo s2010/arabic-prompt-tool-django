@@ -1,0 +1,5 @@
+Django>=4.0
+fastapi
+uvicorn[standard]
+psycopg2-binary
+channels

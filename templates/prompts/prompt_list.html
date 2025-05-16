@@ -1,0 +1,19 @@
+{# templates/prompts/prompt_list.html #}
+{# This template receives a list of 'prompts' and renders them. #}
+{# It is used by home.html and the search view. #}
+
+{% if prompts %}
+    <ul>
+        {% for prompt in prompts %}
+            <li>
+                <h3>{{ prompt.title }}</h3>
+                <p>{{ prompt.content|linebreaksbr }}</p>
+                <small>Submitted by {{ prompt.author.username }} on {{ prompt.created_at|date:"F d, Y" }}</small>
+                {# Include the upvote section snippet #}
+                {% include 'prompts/upvote_section.html' with prompt=prompt %}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No approved prompts found matching your criteria.</p>
+{% endif %}
