@@ -4,7 +4,7 @@ A production-grade, async-ready Django web app for managing and exploring Arabic
 
 ---
 
-## Features
+## Features 
 
 - User authentication (login, logout, register)
 - Submit, approve, and list Arabic prompts
